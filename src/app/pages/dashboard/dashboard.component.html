@@ -1,0 +1,72 @@
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs mt-5">
+  <li [ngbNavItem]="1">
+    <a ngbNavLink>Books</a>
+    <ng-template ngbNavContent>
+      <div class="header mt-5">
+        <h5 class="text-secondary">All Books</h5>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr class="bg-info">
+            <th scope="col">#</th>
+            <th scope="col">Book Title</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of allBooks; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+
+            <td>{{ book.book_title }}</td>
+            <td>
+              <button class="btn btn-outline-info btn-sm mr-3">Edit</button>
+              <button class="btn btn-outline-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <a ngbNavLink>Readers</a>
+    <ng-template ngbNavContent>
+      <div class="header mt-5">
+        <h5 class="text-secondary">All Readers</h5>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr class="bg-info">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let reader of readers; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+
+            <td>{{ reader.reader_name }}</td>
+            <td>
+              <button class="btn btn-outline-info btn-sm mr-3">Edit</button>
+              <button class="btn btn-outline-danger btn-sm">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="3">
+    <a ngbNavLink>Most Popular Book</a>
+    <ng-template ngbNavContent>
+      <div class="header mt-5">
+        <h5 class="text-secondary">Most Popular Book</h5>
+      </div>
+      <div class="alert alert-info">
+        <h5 class="text-center">The New You By Aisha Saleh</h5>
+      </div>
+    </ng-template>
+  </li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+<!-- <pre>Active: {{ active }}</pre> -->
