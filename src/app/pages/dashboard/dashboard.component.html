@@ -5,6 +5,11 @@
       <div class="header mt-5">
         <h5 class="text-secondary">All Books</h5>
       </div>
+       <div *ngIf="message">
+          <div class="alert alert-success text-center mt-2">
+            <h6>Deleted successfully!</h6>
+          </div>
+        </div>
       <table class="table table-striped">
         <thead>
           <tr class="bg-info">
@@ -17,10 +22,10 @@
           <tr *ngFor="let book of allBooks; index as i">
             <th scope="row">{{ i + 1 }}</th>
 
-            <td>{{ book.book_title }}</td>
+            <td>{{ book.title }}</td>
             <td>
               <button class="btn btn-outline-info btn-sm mr-3">Edit</button>
-              <button class="btn btn-outline-danger btn-sm">Delete</button>
+              <button class="btn btn-outline-danger btn-sm" (click)="deleteBook(book.id)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -42,10 +47,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let reader of readers; index as i">
+          <tr *ngFor="let reader of allReaders; index as i">
             <th scope="row">{{ i + 1 }}</th>
 
-            <td>{{ reader.reader_name }}</td>
+            <td>{{ reader.name }}</td>
             <td>
               <button class="btn btn-outline-info btn-sm mr-3">Edit</button>
               <button class="btn btn-outline-danger btn-sm">Delete</button>

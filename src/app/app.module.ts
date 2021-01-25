@@ -7,6 +7,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AddReaderComponent } from './pages/add-reader/add-reader.component';
 import { AddBookComponent } from './pages/add-book/add-book.component';
 import{HttpClientModule} from '@angular/common/http';
+import { HomeComponent } from './pages/home/home.component';
+import {FormsModule} from '@angular/forms'
 
 
 @NgModule({
@@ -14,13 +16,15 @@ import{HttpClientModule} from '@angular/common/http';
     AppComponent,
     DashboardComponent,
     AddReaderComponent,
-    AddBookComponent
+    AddBookComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,40 +1,73 @@
 <div class="main">
-  <div class="header mt-5">
+  <div *ngIf="message" class="mt-2">
+    <div class="alert alert-success text-center">
+      <h6>Submitted successfully!</h6>
+    </div>
+  </div>
+
+  <div *ngIf="notEmpty" class="mt-2">
+    <div class="alert alert-danger text-center">
+      <h6>All Fields Required!!</h6>
+    </div>
+  </div>
+
+  <div class="header mt-3">
     <h4 class="text-secondary text-center">Add New Book</h4>
   </div>
+
   <div class="row mt-3">
     <div class="col-md-8 offset-2 main-form">
-      <form>
+      <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
         <div class="form-group">
           <label for="exampleInputEmail1" class="text-info">Book Title</label>
           <input
             type="text"
+            required
+            [(ngModel)]="book.title"
             class="form-control input-lg"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            name="title"
+            id="title"
             placeholder="Enter title"
+            (input)="clear()"
           />
         </div>
+
         <div class="form-group">
           <label for="exampleInputPassword1" class="text-info">Author</label>
           <input
             type="text"
+            required
+            [(ngModel)]="book.author"
             class="form-control input-lg"
-            id="exampleInputPassword1"
             placeholder="Enter author"
+            name="author"
+            id="author"
+            (input)="clear()"
           />
         </div>
+
         <div class="form-group">
           <label for="exampleInputPassword1" class="text-info">Year</label>
           <input
             type="text"
+            required
+            [(ngModel)]="book.publicationYear"
             class="form-control input-lg"
-            id="exampleInputPassword1"
             placeholder="Enter year"
+            name="publicationYear"
+            id="publicationYear"
+            (input)="clear()"
           />
         </div>
+
         <div class="button">
-          <button type="submit" class="btn btn-info btn-block">Save</button>
+          <button
+            type="submit"
+            class="btn btn-info btn-block"
+            (click)="addBook()"
+          >
+            Submit
+          </button>
         </div>
       </form>
     </div>
